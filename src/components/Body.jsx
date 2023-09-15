@@ -1,4 +1,5 @@
 import RestaurantCard from "./RestaurentCard";
+import Shimmer from "./Shimmer";
 import { RestrauentList } from '../config'
 import { useEffect, useState } from "react";
 import { SWIGGY_PUBLIC_API } from "../config";
@@ -14,7 +15,7 @@ const filterData = (searchText, restaurants) => {
 const Body = () => {
 
   const [searchText, setsearchText] = useState("");
-  const [restaurants, setRestaurants] = useState(RestrauentList);
+  const [restaurants, setRestaurants] = useState([]);
   console.log(restaurants);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const Body = () => {
 
   }
 
-  return (
+  return (restaurants.length === 0) ? <Shimmer /> : (
     <>
       <input
         type="text"
@@ -53,7 +54,7 @@ const Body = () => {
       </button >
 
       <div className="RestrauentList">
-        {restaurants.map((restaurant) => {
+        {restaurants?.map((restaurant) => {
           return (
             <RestaurantCard {...restaurant.info}
               key={restaurant.info.id}
