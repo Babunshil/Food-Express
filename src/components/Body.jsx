@@ -6,17 +6,20 @@ import { SWIGGY_PUBLIC_API } from "../config";
 
 
 const filterData = (searchText, restaurants) => {
-  const filterRestaurants = restaurants.filter((restaurant) =>
-    restaurant.info.name.includes(searchText)
+  const filterResult = restaurants.filter((restaurant) =>
+    restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
   );
-  return filterRestaurants;
+  return filterResult;
 }
 
 const Body = () => {
 
   const [searchText, setsearchText] = useState("");
-  const [restaurants, setRestaurants] = useState([]);
-  console.log(restaurants);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  console.log(filteredRestaurants);
+  console.log(allRestaurants);
+
 
   useEffect(() => {
     getSwiggyData();
@@ -26,11 +29,13 @@ const Body = () => {
     const data = await fetch(SWIGGY_PUBLIC_API);
     const json = await data.json();
 
-    setRestaurants(json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants);
-
+    setAllRestaurants(json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
-  return (restaurants.length === 0) ? <Shimmer /> : (
+
+
+  return (allRestaurants?.length === 0) ? <Shimmer /> : (
     <>
       <input
         type="text"
@@ -45,8 +50,8 @@ const Body = () => {
       <button
         className="search-btn"
         onClick={() => {
-          const data = filterData(searchText, restaurants);
-          setRestaurants(data);
+          const data = filterData(searchText, allRestaurants);
+          setFilteredRestaurants(data);
         }
         }
       >
@@ -54,7 +59,7 @@ const Body = () => {
       </button >
 
       <div className="RestrauentList">
-        {restaurants?.map((restaurant) => {
+        {filteredRestaurants.map((restaurant) => {
           return (
             <RestaurantCard {...restaurant.info}
               key={restaurant.info.id}

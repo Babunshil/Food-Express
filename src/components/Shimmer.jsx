@@ -1,5 +1,11 @@
 const Shimmer = () => {
-  return <h1>Shimmer loader is loading.........</h1>
+  return (
+    <div class="container">
+      <div class="loader"></div>
+      <div class="loader"></div>
+      <div class="loader"></div>
+    </div>
+  )
 }
 
 export default Shimmer;

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 
 const Title = () => (
   <a href="/">
@@ -12,7 +14,16 @@ const Title = () => (
 //REACT COMPONENT =>>
 // Functional component => New way of writting code => Its nothing but a function
 // Class based component => Old way of writting code 
+
+
+
 const Header = () => {
+
+
+  const [logStatus, setLogStatus] = useState(false);
+
+
+
   return (
     <div className="header">
       <Title />
@@ -23,6 +34,9 @@ const Header = () => {
           <li>Contact</li>
           <li>Card</li>
         </ul>
+        {
+          logStatus ? <button onClick={() => { setLogStatus(false) }} >Logout</button> : <button onClick={() => { setLogStatus(true) }} >Login</button>
+        }
       </div>
     </div>
   );
