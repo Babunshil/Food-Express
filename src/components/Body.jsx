@@ -17,8 +17,6 @@ const Body = () => {
   const [searchText, setsearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
-  console.log(filteredRestaurants);
-  console.log(allRestaurants);
 
 
   useEffect(() => {
@@ -48,7 +46,7 @@ const Body = () => {
       />
 
       <button
-        className="search-btn"
+        className="Search-btn"
         onClick={() => {
           const data = filterData(searchText, allRestaurants);
           setFilteredRestaurants(data);

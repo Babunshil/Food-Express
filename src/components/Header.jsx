@@ -14,15 +14,9 @@ const Title = () => (
 //REACT COMPONENT =>>
 // Functional component => New way of writting code => Its nothing but a function
 // Class based component => Old way of writting code 
-
-
-
 const Header = () => {
 
-
   const [logStatus, setLogStatus] = useState(false);
-
-
 
   return (
     <div className="header">
