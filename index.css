@@ -90,3 +90,66 @@ body::-webkit-scrollbar {
   overflow: hidden;
   background-color: rgb(215, 211, 211);
 }
+
+/* RestaurantDetails.css */
+
+.restaurant-details {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 25px;
+  padding: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-image img {
+  height: 20rem;
+  width: 33vw;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.restaurant-name {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #333;
+}
+
+.restaurant-location,
+.restaurant-cuisine {
+  font-size: 18px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.restaurant-rating {
+  font-size: 28px;
+  font-weight: normal;
+  margin: 5px 0;
+  color: #ffa500;
+}
+
+.restaurant-cost {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.restaurant-delivery-time {
+  font-size: 20px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.restaurant-status {
+  font-size: 20px;
+  color: #007bff;
+}
+
+.restaurant-status.closed {
+  color: #f44336;
+}

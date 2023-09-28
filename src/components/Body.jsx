@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { RestrauentList } from '../config'
 import { useEffect, useState } from "react";
 import { SWIGGY_PUBLIC_API } from "../config";
+import { Link } from "react-router-dom";
 
 
 const filterData = (searchText, restaurants) => {
@@ -17,6 +18,7 @@ const Body = () => {
   const [searchText, setsearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
+  // console.log(allRestaurants);
 
 
   useEffect(() => {
@@ -59,9 +61,11 @@ const Body = () => {
       <div className="RestrauentList">
         {filteredRestaurants.map((restaurant) => {
           return (
-            <RestaurantCard {...restaurant.info}
-              key={restaurant.info.id}
-            />
+            <Link to={"/restaurent/" + restaurant.info.id}>
+              <RestaurantCard {...restaurant.info}
+                key={restaurant.info.id}
+              />
+            </Link>
           )
         })}
       </div>
