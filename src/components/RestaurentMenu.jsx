@@ -7,7 +7,6 @@ const RestaurentMenu = () => {
   const { id } = useParams();
 
   const [allRestaurant, setAllRestaurant] = useState(null);
-  console.log(allRestaurant)
 
 
   useEffect(() => {
@@ -15,14 +14,15 @@ const RestaurentMenu = () => {
       const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5276488&lng=88.3645056&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await data.json();
       setAllRestaurant(json.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      console.log(json.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
+
     getAllRestaurent();
 
   }, []);
 
   const menu = allRestaurant?.find(x => x.info.id === id);
-  console.log(menu);
-  const restaurant = menu?.info
+  const restaurant = menu?.info;
 
   return (!allRestaurant) ? <Shimmer /> : (
     <>

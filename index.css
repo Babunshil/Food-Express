@@ -81,6 +81,11 @@ body::-webkit-scrollbar {
   flex-wrap: wrap;
 }
 
+.link {
+  color: black;
+  text-decoration: none;
+}
+
 .shimmer-card {
   width: 245px;
   height: 340px;
