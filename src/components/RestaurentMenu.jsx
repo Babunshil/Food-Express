@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import Shimmer from './Shimmer';
 import { IMG_CDN_URL } from '../config';
+import { SWIGGY_PUBLIC_API } from "../config";
 
 const RestaurentMenu = () => {
   const { id } = useParams();
@@ -11,10 +12,9 @@ const RestaurentMenu = () => {
 
   useEffect(() => {
     async function getAllRestaurent() {
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5276488&lng=88.3645056&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const data = await fetch(SWIGGY_PUBLIC_API);
       const json = await data.json();
-      setAllRestaurant(json.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-      console.log(json.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setAllRestaurant(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
     getAllRestaurent();

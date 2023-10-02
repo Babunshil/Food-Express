@@ -28,9 +28,10 @@ const Body = () => {
   async function getSwiggyData() {
     const data = await fetch(SWIGGY_PUBLIC_API);
     const json = await data.json();
+    console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
 
-    setAllRestaurants(json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setAllRestaurants(json.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
 
@@ -59,7 +60,7 @@ const Body = () => {
       </button >
 
       <div className="RestrauentList">
-        {filteredRestaurants.map((restaurant) => {
+        {filteredRestaurants?.map((restaurant) => {
           return (
             <Link to={"/restaurent/" + restaurant.info.id} className="link">
               <RestaurantCard {...restaurant.info}

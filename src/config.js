@@ -314,7 +314,7 @@ export const RestrauentList = [
       "restaurantOfferPresentationInfo": {}
     },
   },
-  
+
 
 
 ]
